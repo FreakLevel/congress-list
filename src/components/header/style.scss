@@ -1,0 +1,19 @@
+.title {
+    display: flex;
+    width: 100%;
+    max-height: 100px;
+    background-color: gray;
+    align-items: center;
+    justify-content: center;
+}
+
+.title__logo {
+    max-height: 6rem;
+}
+
+.title__text {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+}
