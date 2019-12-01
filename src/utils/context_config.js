@@ -60,7 +60,7 @@ export default () => {
 
     const handlePageNumberChange = (pageNumber) => {
         dispatchItemsPaginatorReducer(ACTIONS.pageNumber_change({
-            action: '   ',
+            action: 'CHANGE_PAGE',
             value: pageNumber
         }))
     }

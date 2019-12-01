@@ -12,10 +12,12 @@ export const congress_change = (congress) => ({
 
 export const itemsPaginator_initial = () => ({})
 
-export const itemsByPage_change = (numItems) => ({
-    payload: numItems
+export const itemsByPage_change = (data) => ({
+    action: data.action,
+    payload: data.value
 })
 
-export const pageNumber_change = (numPage) => ({
-    payload: numPage
+export const pageNumber_change = (data) => ({
+    action: data.action,
+    payload: data.value
 })

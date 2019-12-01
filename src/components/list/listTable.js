@@ -25,19 +25,21 @@ export default (props) => {
             )
         } else if(members.length > 0){
             let rangeItems = UTILS.rangePaginator(context.pageState, context.numItemsState)
-            return rangeItems.map(index => (
-                <div key={index}>
-                    <NavLink
-                        to={`member/${members[index]['id']}`}
-                        className='table__row'
-                        key={`${index}-Nav`}
-                    >
-                        {Object.keys(tableMembersKeys).map(key => (
-                            <div className='table__column' key={`${index}-${key}`}>{members[index][key]}</div>
-                        ))}
-                    </NavLink>
-                </div>
-            ))
+            return rangeItems.map(index => {
+                if(index < members.length -1) {
+                    return <div key={index}>
+                        <NavLink
+                            to={`member/${members[index]['id']}`}
+                            className='table__row'
+                            key={`${index}-Nav`}
+                        >
+                            {Object.keys(tableMembersKeys).map(key => (
+                                <div className='table__column' key={`${index}-${key}`}>{members[index][key]}</div>
+                            ))}
+                        </NavLink>
+                    </div>
+                }
+            })
         } else {
             return (<span>No members found</span>)
         }

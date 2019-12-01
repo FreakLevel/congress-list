@@ -45,17 +45,21 @@ export default () => {
 
     return(
         <div className='list'>
-            <div>
-                <span>Congress (102 - 116 for House, 80 - 116 for Senate): </span>
-                <input type='number' min='80' max='116' value={congress} onChange={(event) => setCongress(event.target.value)} />
-                <span>Chamber: </span>
-                <select onChange={ e => setChamber(e.target.value)} value={chamber}>
-                    {
-                        Object.keys(chambers).map((chamberConst, index) => {
-                            return <option key={index} value={chamberConst} >{chambers[chamberConst]}</option>
-                        })
-                    }
-                </select>
+            <div className='list__congress'>
+                <div>
+                    <span>Congress (102 - 116 for House, 80 - 116 for Senate): </span>
+                    <input type='number' min='80' max='116' value={congress} onChange={(event) => setCongress(event.target.value)} />
+                </div>
+                <div>
+                    <span>Chamber: </span>
+                    <select onChange={ e => setChamber(e.target.value)} value={chamber}>
+                        {
+                            Object.keys(chambers).map((chamberConst, index) => {
+                                return <option key={index} value={chamberConst} >{chambers[chamberConst]}</option>
+                            })
+                        }
+                    </select>
+                </div>
                 <button onClick={saveCongress}>Actualizar</button>
             </div>
             <ListSearch />
