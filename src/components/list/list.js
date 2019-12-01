@@ -38,7 +38,10 @@ export default () => {
         }
     }
 
-    useEffect(() => getMembers(), [])
+    useEffect(() => {
+        async function fetchData() { getMembers() }
+        fetchData()
+    }, [])
 
     return(
         <div className='list'>
