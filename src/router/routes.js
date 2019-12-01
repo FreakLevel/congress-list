@@ -1,20 +1,18 @@
 import React from 'react'
-import { Router, Route, Switch } from 'react-router'
+import { Router, Route, Switch } from 'react-router-dom'
 import history from './history'
 
 import List from '../components/list'
 import Detail from '../components/detail'
 
-export default Routes = () => {
+export default (props) => {
 
     return(
-        <div>
-            <Router history={history} >
-                <Switch>
-                    <Route exact path='/' render={ (routerProps) => <List {...this.props} {...routerProps} /> } />
-                    <Route exact path='/member/:id' render={ (routerProps) => <Detail {...this.props} {...routerProps} /> } />
-                </Switch>
-            </Router>
-        </div>
+        <Router history={history} >
+            <Switch>
+                <Route exact path='/' render={ (routerProps) => <List {...props} {...routerProps} /> } />
+                <Route exact path='/member/:id' render={ (routerProps) => <Detail {...props} {...routerProps} /> } />
+            </Switch>
+        </Router>
     )
 }

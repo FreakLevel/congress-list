@@ -1,0 +1,48 @@
+.list {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.table {
+    display: flex;
+    flex-direction: column;
+}
+
+.table__headers {
+    display: flex;
+    flex-direction: row;
+}
+
+.table__column {
+    padding: 5px;
+    width: 100%;
+}
+
+.table__column--header {
+    background-color: gray;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.table__content {
+    display: flex;
+    flex-direction: row;
+}
+
+.table__row {
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    background-color: white;
+    color: black;
+    font-size: 1.1rem;
+    &:hover {
+        background-color: #a1a1a1;
+    }
+}
+
+.loader {
+    width: 100%;
+    text-align: center;
+}

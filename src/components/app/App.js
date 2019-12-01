@@ -3,7 +3,7 @@ import Container from '../container'
 import Footer from '../footer'
 import Header from '../header'
 
-function App() {
+export default () => {
   return (
     <div className="App">
       <Header />
@@ -12,5 +12,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
