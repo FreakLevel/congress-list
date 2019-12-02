@@ -11,3 +11,5 @@ const MEMBERS_PATH = (congress, chamber) => `${congress}/${chamber}/members.json
 const MEMBER_DETAIL_PATH = (memberId) => `members/${memberId}.json`
 
 export const getAll = (congressInfo) => API.get(URL_BASE + MEMBERS_PATH(congressInfo.congress, congressInfo.chamber), HEADERS)
+
+export const getMember = (memberId) => API.get(URL_BASE + MEMBER_DETAIL_PATH(memberId), HEADERS)

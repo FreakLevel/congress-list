@@ -11,3 +11,11 @@ export const tableMembersKeys = {
     state: 'State',
     phone: 'Phone'
 }
+
+export const memberKeys = {
+    date_of_birth: 'Birthday',
+    gender: 'Gender',
+    url: 'Web Site',
+    twitter_account: 'Twitter',
+    facebook_account: 'Facebook'
+}

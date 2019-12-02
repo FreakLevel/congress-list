@@ -7,6 +7,10 @@
 .table {
     display: flex;
     flex-direction: column;
+    border-left: solid 1px grey;
+    border-right: solid 1px grey;
+    border-radius: 2px;
+    margin-bottom: 20px;
 }
 
 .table__headers {
