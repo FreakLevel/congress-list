@@ -48,7 +48,15 @@ export default (props) => {
                 }, false)
             ))
         } else {
-            return members.filter(member => member[context.fieldFilterState].includes(context.textFilterState))
+            return members.filter(member => {
+                if(member[context.fieldFilterState] === null) {
+                    console.log(member[context.fieldFilterState])
+                    return false
+                } else {
+                    console.log(member[context.fieldFilterState].includes(context.textFilterState))
+                    return member[context.fieldFilterState].includes(context.textFilterState)
+                }
+            })
         }
     }
 

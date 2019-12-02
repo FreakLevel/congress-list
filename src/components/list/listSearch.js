@@ -15,6 +15,18 @@ export default () => {
         }
     }
 
+    const fields = () => {
+        if(context.membersState.length > 0) {
+            return (
+                Object.keys(context.membersState[0]).map((key, index) => (
+                    <option key={index} value={key}>{[key]}</option>
+                ))
+            )
+        } else {
+            return []
+        }
+    }
+
     return(
         <section className='filter'>
             <div>
@@ -25,11 +37,7 @@ export default () => {
                 <span>Field: </span>
                 <select value={context.fieldFilterState} onChange={event => handleFilterChange(event, 'FIELD')} >
                     <option key='default' value='all'>All</option>
-                    {
-                        Object.keys(tableMembersKeys).map((key, index) => (
-                            <option key={index} value={key}>{tableMembersKeys[key]}</option>
-                        ))
-                    }
+                    { fields() }
                 </select>
             </div>
         </section>
