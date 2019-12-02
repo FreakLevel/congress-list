@@ -1,0 +1,49 @@
+.error {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.error__image {
+    max-height: 150px;
+}
+
+.panelInfo {
+    margin: 0 auto;
+    max-width: 450px;
+    margin-top: 15px;
+}
+
+.panelInfo--loader {
+    text-align: center;
+}
+
+.panelInfo--info {
+    border: solid 4px grey;
+    border-radius: 5px;
+}
+
+.panelInfo--goBack {
+    background-color: grey;
+}
+
+.panelInfo__button {
+    border: none;
+    background-color: grey;
+    text-align: center;
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 10px 0;
+}
+
+.panelInfo--data {
+    margin: 10px 10%;
+}
+
+.panelInfo__name {
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+    text-decoration: underline;
+}
