@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import Context from '../../utils/context'
 import './style.scss'
 import { tableMembersKeys } from '../../utils/const'
@@ -8,9 +8,9 @@ export default () => {
 
     const handleFilterChange = (event, attribute) => {
         let value = event.target.value
-        if(attribute == 'TEXT') {
+        if(attribute === 'TEXT') {
             context.handleTextFilterChange(value)
-        } else if (attribute == 'FIELD') {
+        } else if (attribute === 'FIELD') {
             context.handleFieldFilterChange(value)
         }
     }

@@ -21,7 +21,7 @@ export default (props) => {
             return (
                 <div className='loader'>
                     <h5>Loading Data</h5>
-                    <img src={loader} />
+                    <img alt='Loading' src={loader} />
                 </div>
             )
         } else if(members.length > 0){
@@ -29,7 +29,7 @@ export default (props) => {
             let memberList = filtered ? filterMembers() : members
             return rangeItems.map(index => {
                 if(index < memberList.length) {
-                    return <Row member={memberList[index]} index={index} />
+                    return <Row key={index} member={memberList[index]} index={index} />
                 }
             })
         } else {
