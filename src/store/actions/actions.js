@@ -21,3 +21,15 @@ export const pageNumber_change = (data) => ({
     action: data.action,
     payload: data.value
 })
+
+export const filter_initial = () => ({})
+
+export const textFilter_change = (data) => ({
+    action: data.action,
+    payload: data.value
+})
+
+export const fieldFilter_change = (data) => ({
+    action: data.action,
+    payload: data.value
+})

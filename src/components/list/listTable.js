@@ -1,14 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
 import Context from '../../utils/context'
 import { tableMembersKeys } from '../../utils/const'
 import * as UTILS from '../../utils/functions'
 import './style.scss'
 import loader from '../../assets/loader.gif'
+import Row from './listRow'
 
 export default (props) => {
     const context = useContext(Context)
     const [members, setMembers] = useState([])
+    const [filtered, setFiltered] = useState(false)
     const headers = () => (
         Object.values(tableMembersKeys).map((value, index) => (
             <div className='table__column table__column--header' key={index}>{value}</div>
@@ -25,19 +26,10 @@ export default (props) => {
             )
         } else if(members.length > 0){
             let rangeItems = UTILS.rangePaginator(context.pageState, context.numItemsState)
+            let memberList = filtered ? filterMembers() : members
             return rangeItems.map(index => {
-                if(index < members.length -1) {
-                    return <div key={index}>
-                        <NavLink
-                            to={`member/${members[index]['id']}`}
-                            className='table__row'
-                            key={`${index}-Nav`}
-                        >
-                            {Object.keys(tableMembersKeys).map(key => (
-                                <div className='table__column' key={`${index}-${key}`}>{members[index][key]}</div>
-                            ))}
-                        </NavLink>
-                    </div>
+                if(index < memberList.length) {
+                    return <Row member={memberList[index]} index={index} />
                 }
             })
         } else {
@@ -45,8 +37,24 @@ export default (props) => {
         }
     }
 
+    const filterMembers = () => {
+        if(context.fieldFilterState === 'all') {
+            return members.filter(member => (
+                Object.keys(tableMembersKeys).reduce((has, key) => {
+                    if (has) return true
+                    if (member[key] === undefined) return false
+                    if (member[key] === null) return false
+                    return member[key].includes(context.textFilterState)
+                }, false)
+            ))
+        } else {
+            return members.filter(member => member[context.fieldFilterState].includes(context.textFilterState))
+        }
+    }
+
     useEffect(() => {
         setMembers(context.membersState)
+        setFiltered(context.textFilterState !== '')
     }, [context])
 
     return(

@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Context from '../../utils/context'
-import * as UTILS from '../../utils/functions'
 import './style.scss'
 import ListSearch from './listSearch'
 import ListPaginator from './listPaginator'
@@ -17,6 +16,7 @@ export default () => {
     const saveCongress = () => {
         if(congressValidation()) {
             context.handleCongressChange({ congress, chamber })
+            setLoader(true)
             getMembers()
         } else {
             alert('The congress selected is out of range of chamber selected')
@@ -54,9 +54,9 @@ export default () => {
                     <span>Chamber: </span>
                     <select onChange={ e => setChamber(e.target.value)} value={chamber}>
                         {
-                            Object.keys(chambers).map((chamberConst, index) => {
-                                return <option key={index} value={chamberConst} >{chambers[chamberConst]}</option>
-                            })
+                            Object.keys(chambers).map((chamberConst, index) => (
+                                <option key={index} value={chamberConst} >{chambers[chamberConst]}</option>
+                            ))
                         }
                     </select>
                 </div>

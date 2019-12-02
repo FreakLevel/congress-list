@@ -5,6 +5,7 @@ import * as ACTIONS from '../store/actions/actions'
 import * as CongressReducer from '../store/reducers/congress_reducer'
 import * as MembersReducer from '../store/reducers/members_reducer'
 import * as ItemsPaginatorReducer from '../store/reducers/items_paginator_reducer'
+import * as FilterReducer from '../store/reducers/filter_reducer'
 
 export default () => {
     const [
@@ -65,6 +66,32 @@ export default () => {
         }))
     }
 
+    const [
+        stateFilterReducer,
+        dispatchFilterReducer
+    ] = useReducer(
+        FilterReducer.FilterReducer,
+        FilterReducer.initialState
+        )
+
+    const handleFilterInitial = () => {
+        dispatchFilterReducer(ACTIONS.members_initial())
+    }
+
+    const handleTextFilterChange = (text) => {
+        dispatchFilterReducer(ACTIONS.textFilter_change({
+            action: 'CHANGE_TEXT_FILTER',
+            value: text
+        }))
+    }
+
+    const handleFieldFilterChange = (field) => {
+        dispatchFilterReducer(ACTIONS.fieldFilter_change({
+            action: 'CHANGE_FIELD_FILTER',
+            value: field
+        }))
+    }
+
     return(
         <Context.Provider
             value={{
@@ -79,7 +106,12 @@ export default () => {
                 pageState: stateItemsPaginatorReducer.page,
                 handleItemsPaginatorInitial: () => handleItemsPaginatorInitial(),
                 handleItemsByPageChange: (event) => handleItemsByPageChange(event),
-                handlePageNumberChange: (event) => handlePageNumberChange(event)
+                handlePageNumberChange: (event) => handlePageNumberChange(event),
+                textFilterState: stateFilterReducer.textFilter,
+                fieldFilterState: stateFilterReducer.fieldFilter,
+                handleFilterInitial: () => handleFilterInitial(),
+                handleTextFilterChange: (event) => handleTextFilterChange(event),
+                handleFieldFilterChange: (event) => handleFieldFilterChange(event)
             }}
         >
             <Routes />
