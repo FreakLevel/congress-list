@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/02411710-deea-4675-a947-96a63720d71f/deploy-status)](https://app.netlify.com/sites/congress-list/deploys)
+
 Task Definition
 
 Create a project using create-react-app and implement a list of congress members. You should read and implement the ProPublica Congress API:
